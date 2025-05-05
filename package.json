@@ -1,0 +1,32 @@
+{
+  "name": "proyecto_gestion_de_tareas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheleyendX/Proyecto_Gestion_de_tareas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/TheleyendX/Proyecto_Gestion_de_tareas/issues"
+  },
+  "homepage": "https://github.com/TheleyendX/Proyecto_Gestion_de_tareas#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "mysql2": "^3.14.0",
+    "sequelize": "^6.37.7",
+    "sequelize-cli": "^6.6.2"
+  },
+  "devDependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
