@@ -1,4 +1,5 @@
 const usuarioDAO = require('../DAOS/usuarioDAO');//Importamos el DAO de usuario
+const jwt = require("jsonwebtoken");
 
 class usuarioController{
     constructor(){}
@@ -62,6 +63,21 @@ class usuarioController{
             res.json(usuarios);
         } catch (error) {
             res.status(500).json({error: 'Error al obtener todo los usuarios'}); 
+        }
+    }
+    //Función que permite iniciar sesión
+    async iniciarSesión(req, res){
+        try {
+            const {correo, contrasena} = req.body;
+            const usuario = await usuarioDAO.obtenerUsuarioPorCorreo(correo);
+            if(!usuario || usuario.contrasena !== contrasena){
+                return res.status(401).json({error: 'Correo o contraseña incorrectos'});
+            }
+            const token = jwt.sign({id: usuario.id, correo: usuario.correo}, "Tilines", {expiresIn: "2h"});
+            res.json({mensaje: "Inicio de sesión éxitoso", token});
+        } catch (error) {
+            console.error('Error en iniciarSesión', error);
+            res.status(500).json({error: 'Error al iniciar sesión'});
         }
     }
 }

@@ -27,6 +27,11 @@
       </div>
     </div>
   </div>
-  <script src="script.js"></script>
+  <script>
+    if (!localStorage.getItem("token")) {
+        alert("No tienes acceso. Inicia sesión primero.");
+        window.location.href = "main.html";
+    }
+    </script>
 </body>
 </html>

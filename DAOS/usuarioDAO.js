@@ -45,9 +45,9 @@ class UsuarioDAO {
         }
     }
     //Función que consulta un usuario
-    async obtenerUsuarioPorID(id){
+    async obtenerUsuarioPorCorreo(correo){
         try {
-            const usuario = await Usuario.findByPk(id);
+            const usuario = await Usuario.findOne({ where: {correo}});
             if (!usuario) {
                 throw new Error('Usuario no encontrado');
             }
