@@ -9,7 +9,7 @@
 <body>
   <div class="container">
     <div class="sidebar">
-        <button onclick="location.href='index.html'">Cerrar sesion</button>
+        <button onclick="location.href='login.html'">Cerrar sesion</button>
       <button class="btn">Calendario</button>
       <button onclick="location.href='crear_tarea.html'">Crear Nueva Tarea</button>
       <button class="btn">Lista de Tareas</button>
@@ -30,7 +30,7 @@
   <script>
     if (!localStorage.getItem("token")) {
         alert("No tienes acceso. Inicia sesión primero.");
-        window.location.href = "main.html";
+        window.location.href = "login.html";
     }
     </script>
 </body>

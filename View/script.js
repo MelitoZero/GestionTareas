@@ -22,7 +22,8 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         method: "POST",
         headers: {"Content-type": "application/json"},
         body: JSON.stringify({correo, contrasena})
-        });
+    });
+
     const data = await response.json();
     if (data.token) {
         localStorage.setItem("token", data.token);
@@ -31,5 +32,5 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
     }else {
         alert("Error al iniciar sesión" + data.error || "Ocurrio un problema");
     }
-    document.getElementById("loginForm").reset();    
+    //document.getElementById("loginForm").reset();    
 });
