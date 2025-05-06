@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #aef0ed;
+    font-family: Arial, sans-serif;
+    color: #fff;
+  }
+  
+  .container {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .volver {
+    align-self: flex-start;
+    margin-bottom: 1rem;
+  }
+  
+  .titulo {
+    color: rgb(7, 7, 7);
+    margin-bottom: 2rem;
+  }
+  
+  .tabla-container {
+    width: 90%;
+    max-width: 800px;
+    background-color: #84e4fc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px #000;
+  }
+  
+  .tabla {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .tabla th {
+    background-color: #009e8c;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .tabla td {
+    padding: 1rem;
+    text-align: center;
+    color: #000;
+    background-color: #b1e7fd;
+  }
+  
+  .btn {
+    background-color: #00bfa6;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn:hover {
+    background-color: #00bfa6;
+  }
+  

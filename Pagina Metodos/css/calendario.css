@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #aef0ed;
+    font-family: Arial, sans-serif;
+    color: #fff;
+  }
+  
+  .container {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .titulo {
+    color: #223;
+    margin-bottom: 2rem;
+  }
+  
+  .btn {
+    align-self: flex-start;
+    background-color: #00bfa6;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 1rem;
+  }
+  
+  .btn:hover {
+    background-color: #5a79e6;
+  }
+  
+  #calendario {
+    width: 100%;
+    max-width: 800px;
+    background-color: #849efc;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  
+  th, td {
+    width: 14.28%;
+    height: 120px;
+    border: 1px solid #333;
+    text-align: left;
+    vertical-align: top;
+    padding: 0.3rem;
+    background-color: #b1c3fd;
+    color: #000;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  th {
+    background-color: #00bfa6;
+    color: white;
+    text-align: center;
+  }
+  
+  td {
+    position: relative;
+  }
+  
+  td strong {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .tarea {
+    background-color: #00bfa6;
+    color: white;
+    padding: 2px 4px;
+    margin: 2px 0;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  /* Scroll interno si hay muchas tareas */
+  td .tarea-container {
+  

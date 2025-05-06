@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendario</title>
+  <link rel="stylesheet" href="css/calendario.css">
+</head>
+<body>
+  <div class="container">
+    <button class="btn volver">Volver</button>
+    <h1 class="titulo">Calendario de Tareas</h1>
+    <div id="calendario"></div>
+  </div>
+
+  <script>
+    const tareas = {
+      "2025-05-05": ["Estudiar para el examen"],
+      "2025-05-08": ["Entregar proyecto final", "Enviar correo a tutor"],
+      "2025-05-12": ["Reunión de equipo"],
+    };
+
+    function generarCalendario(año, mes) {
+      const diasSemana = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+      const calendario = document.getElementById("calendario");
+      calendario.innerHTML = "";
+
+      const fecha = new Date(año, mes, 1);
+      const primerDia = fecha.getDay();
+      const ultimoDia = new Date(año, mes + 1, 0).getDate();
+
+      const tabla = document.createElement("table");
+      const thead = document.createElement("thead");
+      const filaDias = document.createElement("tr");
+
+      diasSemana.forEach(dia => {
+        const th = document.createElement("th");
+        th.textContent = dia;
+        filaDias.appendChild(th);
+      });
+      thead.appendChild(filaDias);
+      tabla.appendChild(thead);
+
+      const tbody = document.createElement("tbody");
+      let fila = document.createElement("tr");
+
+      for (let i = 0; i < primerDia; i++) {
+        fila.appendChild(document.createElement("td"));
+      }
+
+      for (let dia = 1; dia <= ultimoDia; dia++) {
+        const celda = document.createElement("td");
+        const fechaStr = `${año}-${(mes + 1).toString().padStart(2, '0')}-${dia.toString().padStart(2, '0')}`;
+
+        celda.innerHTML = `<strong>${dia}</strong>`;
+        if (tareas[fechaStr]) {
+          tareas[fechaStr].forEach(tarea => {
+            const tareaElem = document.createElement("div");
+            tareaElem.className = "tarea";
+            tareaElem.textContent = tarea;
+            celda.appendChild(tareaElem);
+          });
+        }
+
+        fila.appendChild(celda);
+        if ((dia + primerDia) % 7 === 0 || dia === ultimoDia) {
+          tbody.appendChild(fila);
+          fila = document.createElement("tr");
+        }
+      }
+
+      tabla.appendChild(tbody);
+      calendario.appendChild(tabla);
+    }
+
+    const hoy = new Date();
+    generarCalendario(hoy.getFullYear(), hoy.getMonth());
+  </script>
+</body>
+</html>
