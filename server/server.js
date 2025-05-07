@@ -9,10 +9,11 @@ app.use(bodyParser.json());
 app.use(express.static("View"));
 //Función que permite validar tokens
 function verificarToken(req, res, next){
-    const token = req.headers.authorization;
-    if (!token) {
+    const authHeader = req.headers.authorization;
+    if (!authHeader) {
         return res.status(403).json({error: "No tienes acceso. Necesitas token"});
     }
+    const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7): authHeader;
     try {
       const decodificado = jwt.verify(token, "Tilines");
       req.usuario = decodificado;  
@@ -24,7 +25,7 @@ function verificarToken(req, res, next){
 
 //Define rutas de usuarios
 app.post("/usuarios", usuarioController.registrarUsuario);
-app.post("/login", verificarToken, usuarioController.iniciarSesión);
+app.post("/login",  usuarioController.iniciarSesión);
 app.get("/usuarios", usuarioController.obtenerUsuarios);
 app.get("/usuarios/:id", usuarioController.obtenerUsuarioPorID);
 app.put("/usuarios/:id", usuarioController.actualizarUsuario);
