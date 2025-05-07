@@ -73,7 +73,7 @@ class usuarioController{
             if(!usuario || usuario.contrasena !== contrasena){
                 return res.status(401).json({error: 'Correo o contraseña incorrectos'});
             }
-            const token = jwt.sign({id: usuario.id, correo: usuario.correo}, "Tilines", {expiresIn: "2h"});
+            const token = jwt.sign({id: usuario.id, email: usuario.correo}, "Tilines", {expiresIn: "2h"});
             res.json({mensaje: "Inicio de sesión éxitoso", token});
         } catch (error) {
             console.error('Error en iniciarSesión', error);
