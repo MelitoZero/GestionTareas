@@ -76,7 +76,7 @@ class usuarioController{
             const token = jwt.sign({id: usuario.id, correo: usuario.correo}, "Tilines", {expiresIn: "2h"});
             res.json({mensaje: "Inicio de sesión éxitoso", token});
         } catch (error) {
-            console.error('Error en iniciarSesión', error);
+            console.error('Error en iniciar Sesión', error);
             res.status(500).json({error: 'Error al iniciar sesión'});
         }
     }

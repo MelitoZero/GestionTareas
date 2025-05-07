@@ -19,9 +19,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 alert("Inicio de sesión exitoso");
                 window.location.href = "main.html";
             }else {
-                alert("Error al iniciar sesión" + (data.error || "Ocurrio un problema"));
+                alert("Error al iniciar sesión " + (data.error || "Ocurrio un problema"));
             }
-            
+
         });
     }
     //Funcion que permite registrar un usuario
