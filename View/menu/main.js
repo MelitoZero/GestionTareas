@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function() {
         closeBtn.addEventListener("click", function() {
             localStorage.removeItem("token");
             alert("Sesión cerrada");
-            window.location.href = "index.html";
-            location.reload();
+            window.location.href = "/View/login/index.html";
         });    
 });
