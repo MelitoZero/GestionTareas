@@ -106,4 +106,128 @@ a:hover {
   .text-link:hover {
     color: #1a8cff;
   }
-  
+
+
+/* Inicia perfil estilos */
+/* Estilo del body */
+#perfil-body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #e0f7f7;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+/* Header superior con flexbox */
+#perfil-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: first center;
+    padding: 1.5rem 2rem;
+    background-color: #d1f2f2;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Título del perfil */
+#perfil-titulo {
+    font-size: 2rem;
+    margin: 0;
+}
+
+/* Navegación */
+#perfil-nav a {
+    margin-left: 1rem;
+    text-decoration: none;
+    color: teal;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+#perfil-nav a:hover {
+    color: #007BFF;
+}
+
+#perfil-nav .activo {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Centrar el contenido principal */
+#perfil-main {
+    max-width: 600px;
+    padding: 2rem;
+    background-color: #cc000034;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+/* Información del usuario */
+#info-usuario h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+#info-usuario p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+.perfil-botones {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+/* Botones */
+.btn-editar,
+.btn-eliminar {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-editar {
+    background-color: #009688;
+    color: white;
+}
+
+.btn-editar:hover {
+    background-color: #00796b;
+}
+
+.btn-eliminar {
+    background-color: #e53935;
+    color: white;
+}
+
+.btn-eliminar:hover {
+    background-color: #c62828;
+}
+
+#perfil-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#perfil-content-wrapper {
+    flex: 1; /* ocupa el espacio restante del body */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
