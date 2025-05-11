@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Actualizar Tarea</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <button class="btn" onclick="location.href='/View/dashboard/dashboard.html'">Volver</button>
+    <h1 class="titulo">Actualizar Tarea</h1>
+    <form class="formulario">
+      <label for="titulo">Título:</label>
+      <input type="text" id="titulo" name="titulo" value="Tarea existente" required />
+
+      <label for="descripcion">Descripción:</label>
+      <textarea id="descripcion" name="descripcion" rows="4">Descripción existente</textarea>
+
+      <label for="fecha">Fecha límite:</label>
+      <input type="date" id="fecha" name="fecha" value="2025-05-10" required />
+
+      <label for="categoria">Categoría:</label>
+      <select id="categoria" name="categoria">
+        <option value="escuela">Escuela</option>
+        <option value="trabajo">Trabajo</option>
+        <option value="personal">Personal</option>
+      </select>
+
+      <label for="estado">Estado:</label>
+      <select id="estado" name="estado">
+        <option value="pendiente">Pendiente</option>
+        <option value="en_proceso">En Proceso</option>
+        <option value="completado">Completado</option>
+      </select>
+
+      <button type="submit" class="btn-guardar">Guardar Cambios</button>
+    </form>
+  </div>
+</body>
+</html>
