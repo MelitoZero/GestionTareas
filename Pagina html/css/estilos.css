@@ -74,13 +74,13 @@ a:hover {
   }
   
   #login-card {
-    background-color: #2c2c2c;
+    background-color: #ccf8e7;
     border: none;
   }
   
   #login-form input {
-    background-color: #3a3a3a;
-    color: white;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
     border: 1px solid #555;
   }
   
@@ -89,7 +89,7 @@ a:hover {
   }
   
   #btn-login {
-    background-color: #007bff;
+    background-color: #009e8c;
     border: none;
   }
   
