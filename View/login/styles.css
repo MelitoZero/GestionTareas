@@ -1,4 +1,13 @@
-body {
+.IniciarSesion {
+        background-color: #ccf8e7;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    text-align: center;
+}
+
+.body {
     font-family: Arial, sans-serif;
     background: #aef0ed;
     display: flex;
@@ -8,30 +17,18 @@ body {
     margin: 0;
 }
 
-form {
+.loginForm {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.IniciarSesion,
-.CrearCuenta {
-    background-color: #ccf8e7;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    width: 320px;
-    text-align: center;
-}
-
-h1 {
+.title {
     margin-bottom: 20px;
     color: #333;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"] {
+.input{
     padding: 12px;
     font-size: 14px;
     border: 1px solid #ccc;
@@ -40,7 +37,7 @@ input[type="password"] {
     box-sizing: border-box;
 }
 
-button {
+.btn {
     padding: 12px;
     background-color: #00bfa6;
     color: white;
@@ -50,19 +47,19 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.btn:hover {
     background-color: #009e8c;
 }
 
-p {
+.pa {
     margin-top: 15px;
 }
 
-a {
+.ref {
     color: #00bfa6;
     text-decoration: none;
 }
 
-a:hover {
+.ref:hover {
     text-decoration: underline;
 }

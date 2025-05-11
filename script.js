@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const loginForm = document.getElementById("loginForm");
     const registroForm = document.getElementById("registroForm");
     const closeBtn = document.getElementById("close");
-    //Funcion que permite iniciar sesión a un usuario
+    /*//Funcion que permite iniciar sesión a un usuario
     if (loginForm) {
         document.getElementById("loginForm").addEventListener("submit", async function(event) {
             event.preventDefault();
@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", function() {
             }
 
         });
-    }
-    //Funcion que permite registrar un usuario
+    }*/
+    /*//Funcion que permite registrar un usuario
     if (registroForm) {
         document.getElementById("registroForm").addEventListener("submit", async function(event) {
             event.preventDefault();
@@ -41,8 +41,8 @@ document.addEventListener("DOMContentLoaded", function() {
             alert(data.mensaje);
             registroForm.reset();
         });
-    }
-    //Función que cierra sesión
+    }*/
+    /*//Función que cierra sesión
     if (closeBtn) {
         closeBtn.addEventListener("click", function() {
             localStorage.removeItem("token");
@@ -50,13 +50,13 @@ document.addEventListener("DOMContentLoaded", function() {
             window.location.href = "index.html";
             location.reload();
         });
-    }
-    //Función que verifica el token de sesión 
+    }*/
+    /*//Función que verifica el token de sesión 
     if (window.location.pathname.includes("main.html")) {
         const token = localStorage.getItem("token");
         console.log("Token en el localstorage: ", token);
         if (!token) {
           window.location.href = "index.html";
         }        
-    }
+    }*/
 });
