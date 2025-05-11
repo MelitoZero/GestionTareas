@@ -8,19 +8,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body class="body">
     <div class="CrearCuenta">
-        <h1>Crear Cuenta</h1>
-        <form id="registroForm">
-            <input type="text" id="nombre" placeholder="Nombre completo" required>
-            <input type="email" id="correo" placeholder="Correo electrónico" required>
-            <input type="password" id="contrasena" placeholder="Contraseña" required>
-            <input type="password" id="verificar" placeholder="Confirmar contraseña" required>
-            <button type="submit">Registrarse</button>
+        <h1 class="title">Crear Cuenta</h1>
+        <form class="registerForm" id="registroForm">
+            <input class="input" type="text" id="nombre" placeholder="Nombre completo" required>
+            <input class="input" type="email" id="correo" placeholder="Correo electrónico" required>
+            <input class="input" type="password" id="contrasena" placeholder="Contraseña" required>
+            <input class="input" type="password" id="verificar" placeholder="Confirmar contraseña" required>
+            <button class="btn" type="submit">Registrarse</button>
         </form>
-        <p>¿Ya tienes cuenta? <a href="index.html">Inicia sesión</a></p>
+        <p class="pa">¿Ya tienes cuenta? <a class="ref" href="index.html">Inicia sesión</a></p>
     </div>
-    <script src="script.js"></script>
+    <script src="register.js"></script>
 </body>
-
 </html>
