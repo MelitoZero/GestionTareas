@@ -5,12 +5,18 @@ const tareaController = require('../controllers/tareaController');
 const reconocimientoController = require('../controllers/reconocimientoController');
 const listaController = require('../controllers/listaController');
 const calendarioController = require('../controllers/calendarioController');
+const recordatorioController = require('../controllers/recordatorioController');
 const app = express();
 const PORT = 3000;
 const jwt = require("jsonwebtoken");
+const path = require('path');
 //Permite procesar JSON
 app.use(bodyParser.json());
 app.use(express.static("View"));
+/*app.get("/", (req, res)=> {
+    //res.redirect("/View/login/index.html");
+    res.sendFile(path.join(__dirname, 'View', 'login', 'index.html'));
+});*/
 //Función que permite validar tokens
 function verificarToken(req, res, next){
     const authHeader = req.headers.authorization;
@@ -34,6 +40,9 @@ app.get("/usuarios", usuarioController.obtenerUsuarios);
 app.get("/usuarios/:id", usuarioController.obtenerUsuarioPorID);
 app.put("/usuarios/:id", usuarioController.actualizarUsuario);
 app.delete("/usuarios/:id", usuarioController.eliminarUsuario);
+/*app.get("/perfil", verificarToken, (req, res) =>{
+    res.json({id: req.usuario.id, correo: req.usuario.correo});
+});*/
 // Define rutas de tareas
 app.post("/tareas", tareaController.registrarTarea);
 app.get("/tareas", tareaController.obtenerTareas);
@@ -69,6 +78,10 @@ app.get("/calendarios/:id", calendarioController.obtenerCalendarioPorID);
 app.put("/calendarios/:id", calendarioController.actualizarCalendario);
 app.delete("/calendarios/:id", calendarioController.eliminarCalendario);
 
+//Ruta de prueba
+/*app.get("/", (req, res)=> {
+    res.send("Servidor funcionando ");
+});*/
 //Inicia el servidor
 app.listen(PORT, ()=> {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
