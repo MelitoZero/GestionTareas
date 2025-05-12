@@ -10,17 +10,17 @@ body {
   }
   
   .container {
-    max-width: 500px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: #222;
-    border-radius: 15px;
-    box-shadow: 0 0 10px #000;
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 8rem;
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0 0 20px #000;
   }
   
   .titulo {
     text-align: center;
-    color: #eeeeee;
+    color: #000000;
     margin-bottom: 2rem;
   }
   
