@@ -41,9 +41,7 @@ app.get("/usuarios", usuarioController.obtenerUsuarios);
 app.get("/usuarios/:id", usuarioController.obtenerUsuarioPorID);
 app.put("/usuarios/:id", usuarioController.actualizarUsuario);
 app.delete("/usuarios/:id", usuarioController.eliminarUsuario);
-/*app.get("/perfil", verificarToken, (req, res) =>{
-    res.json({id: req.usuario.id, correo: req.usuario.correo});
-});*/
+
 // Define rutas de tareas
 app.post("/tareas", tareaController.registrarTarea);
 app.get("/tareas", tareaController.obtenerTareas);
