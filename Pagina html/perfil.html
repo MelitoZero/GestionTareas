@@ -9,7 +9,7 @@
 </head>
 <body>
   <header class="header">
-    <h1 class="logo" >Mi Perfil</h1>
+    <h1 class="logo">Mi Perfil</h1>
     <nav class="nav">
       <a href="dashboard.html" class="nav-link">Menú</a>
       <a href="index.html" class="nav-link">Cerrar Sesión</a>
@@ -25,12 +25,14 @@
       <div class="profile-info">
         <div class="info-item">
           <span class="info-label">Nombre:</span>
-          <span class="info-value">Usuario de Prueba</span>
+          <span class="info-value" id="name-value">Usuario de Prueba</span>
+          <input type="text" class="info-edit" id="name-edit" value="Usuario de Prueba" style="display: none;">
         </div>
         
         <div class="info-item">
           <span class="info-label">Correo:</span>
-          <span class="info-value">usuario@correo.com</span>
+          <span class="info-value" id="email-value">usuario@correo.com</span>
+          <input type="email" class="info-edit" id="email-edit" value="usuario@correo.com" style="display: none;">
         </div>
         
         <div class="info-item">
@@ -40,24 +42,88 @@
       </div>
       
       <div class="profile-actions">
-        <button class="btn btn-edit">Editar Perfil</button>
+        <button class="btn btn-edit" id="edit-btn">Editar Perfil</button>
+        <button class="btn btn-save" id="save-btn" style="display: none;">Guardar Cambios</button>
+        <button class="btn btn-cancel" id="cancel-btn" style="display: none;">Cancelar</button>
         <button class="btn btn-delete">Eliminar Cuenta</button>
       </div>
     </div>
   </main>
   
   <script>
-    // Funcionalidad para los botones
-    document.querySelector('.btn-edit').addEventListener('click', function() {
-      alert('Función para editar perfil');
+    // Elementos del DOM
+    const editBtn = document.getElementById('edit-btn');
+    const saveBtn = document.getElementById('save-btn');
+    const cancelBtn = document.getElementById('cancel-btn');
+    const deleteBtn = document.querySelector('.btn-delete');
+    
+    // Campos editables
+    const nameValue = document.getElementById('name-value');
+    const nameEdit = document.getElementById('name-edit');
+    const emailValue = document.getElementById('email-value');
+    const emailEdit = document.getElementById('email-edit');
+    
+    // Modo edición
+    let isEditing = false;
+    
+    // Habilitar edición
+    editBtn.addEventListener('click', function() {
+      isEditing = true;
+      toggleEditMode();
     });
     
-    document.querySelector('.btn-delete').addEventListener('click', function() {
+    // Guardar cambios
+    saveBtn.addEventListener('click', function() {
+      nameValue.textContent = nameEdit.value;
+      emailValue.textContent = emailEdit.value;
+      isEditing = false;
+      toggleEditMode();
+      alert('Cambios guardados correctamente');
+    });
+    
+    // Cancelar edición
+    cancelBtn.addEventListener('click', function() {
+      // Restaurar valores originales
+      nameEdit.value = nameValue.textContent;
+      emailEdit.value = emailValue.textContent;
+      isEditing = false;
+      toggleEditMode();
+    });
+    
+    // Eliminar cuenta
+    deleteBtn.addEventListener('click', function() {
       if (confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.')) {
         alert('Cuenta eliminada');
         window.location.href = 'index.html';
       }
     });
+    
+    // Función para cambiar entre modos de visualización y edición
+    function toggleEditMode() {
+      if (isEditing) {
+        // Mostrar campos de edición y ocultar valores
+        nameValue.style.display = 'none';
+        nameEdit.style.display = 'block';
+        emailValue.style.display = 'none';
+        emailEdit.style.display = 'block';
+        
+        // Mostrar botones guardar/cancelar y ocultar editar
+        editBtn.style.display = 'none';
+        saveBtn.style.display = 'block';
+        cancelBtn.style.display = 'block';
+      } else {
+        // Mostrar valores y ocultar campos de edición
+        nameValue.style.display = 'block';
+        nameEdit.style.display = 'none';
+        emailValue.style.display = 'block';
+        emailEdit.style.display = 'none';
+        
+        // Mostrar botón editar y ocultar guardar/cancelar
+        editBtn.style.display = 'block';
+        saveBtn.style.display = 'none';
+        cancelBtn.style.display = 'none';
+      }
+    }
   </script>
 </body>
 </html>
