@@ -1,4 +1,5 @@
-const UsuarioDAO = require('./dataAccess/usuarioDAO');
+const UsuarioDAO = require('./DAOS/usuarioDAO');
+const listaDao = require('./DAOS/listaDAO');
 const { sequelize } = require('./models');
 
 //Funcion asincrona para ejecutar las operaciones
@@ -10,6 +11,8 @@ const { sequelize } = require('./models');
       /*//Crear un usuario
       const usuario = await UsuarioDAO.crearUsuario('JokitoFokito', 'fokoloko@gmail.com', 'fokaso3000');
       console.log('El usuario es: ', usuario.toJSON());*/
+      //const lista = await listaDao.crearLista('ListaPrueba', 'Esta lista es de prueba y se probara con tareas de prueba', 2);
+      //console.log('La lista es: ', lista.toJSON());
       /*//Eliminar un usuario
       await UsuarioDAO.eliminarUsuario(1);
       console.log('usuario eliminado');*/
