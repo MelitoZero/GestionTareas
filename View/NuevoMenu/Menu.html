@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú Minimalista</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+  <!-- Mobile menu button -->
+  <button class="mobile-menu-button" id="mobile-menu-toggle">
+    <i class='bx bx-menu'></i>
+  </button>
+  
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2>Menu</h2>
+      <!-- Botón de notificaciones -->
+      <button class="notification-button" id="notification-toggle">
+        <i class='bx bx-bell'></i>
+        <span class="notification-badge">3</span>
+      </button>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-item">
+        <i class='bx bx-log-out'></i>
+        <span>Cerrar sesión</span>
+      </a>
+      <a href="perfil.html" class="nav-item">
+        <i class='bx bx-user'></i>
+        <span>Perfil</span>
+      </a>
+      <a href="crear_tarea.html" class="nav-item">
+        <i class='bx bx-plus-circle'></i>
+        <span>Crear Nueva Tarea</span>
+      </a>
+      <a href="Lista_Tareas.html" class="nav-item">
+        <i class='bx bx-task'></i>
+        <span>Lista de Tareas</span>
+      </a>
+    </nav>
+    
+    <!-- Panel de notificaciones (inicialmente oculto) -->
+    <div class="notification-panel" id="notification-panel">
+      <div class="notification-header">
+        <h3>Reconocimientos</h3>
+        <button class="close-button" id="close-notifications">
+          <i class='bx bx-x'></i>
+        </button>
+      </div>
+      <div class="notification-list">
+        <div class="notification-item">
+          <div class="notification-icon">
+            <i class='bx bx-medal'></i>
+          </div>
+          <div class="notification-content">
+            <p class="notification-text">Has completado todas tus tareas de hoy</p>
+            <span class="notification-time">Hace 2 horas</span>
+          </div>
+        </div>
+        <div class="notification-item">
+          <div class="notification-icon">
+            <i class='bx bx-trophy'></i>
+          </div>
+          <div class="notification-content">
+            <p class="notification-text">¡Felicidades! Has alcanzado 5 días consecutivos completando tareas</p>
+            <span class="notification-time">Ayer</span>
+          </div>
+        </div>
+        <div class="notification-item">
+          <div class="notification-icon">
+            <i class='bx bx-star'></i>
+          </div>
+          <div class="notification-content">
+            <p class="notification-text">Has recibido un reconocimiento por tu proyecto</p>
+            <span class="notification-time">Hace 3 días</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  
+  <!-- Main content -->
+  <main class="main-content">
+    <h1>Bienvenido</h1>
+    <div class="task-card">
+      <h2>Tareas del día</h2>
+      <p>No hay tareas programadas para hoy.</p>
+    </div>
+    
+    <!-- Calendario -->
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <button id="prev-month"><i class='bx bx-chevron-left'></i></button>
+        <h3 id="month-year">Mayo 2025</h3>
+        <button id="next-month"><i class='bx bx-chevron-right'></i></button>
+      </div>
+      <div class="weekdays">
+        <div>Lu</div>
+        <div>Ma</div>
+        <div>Mi</div>
+        <div>Ju</div>
+        <div>Vi</div>
+        <div>Sa</div>
+        <div>Do</div>
+      </div>
+      <div class="days" id="calendar-days">
+        <!-- Los días se generarán con JavaScript -->
+      </div>
+    </div>
+  </main>
+  
+  <!-- Sections menu -->
+  <div class="sections-menu">
+    <button class="section-button active" data-section="tareas-del-dia">
+      Tareas del día
+      <i class='bx bx-chevron-right'></i>
+    </button>
+    <button class="section-button" data-section="siguientes">
+      Siguientes
+      <i class='bx bx-chevron-right'></i>
+    </button>
+  </div>
+  
+  <script>
+    // Mobile menu toggle
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    
+    mobileMenuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+    
+    // Section buttons
+    const sectionButtons = document.querySelectorAll('.section-button');
+    
+    sectionButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        sectionButtons.forEach(btn => btn.classList.remove('active'));
+        
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        // Here you would normally load the content for the selected section
+        const sectionId = button.getAttribute('data-section');
+        console.log(`Section selected: ${sectionId}`);
+      });
+    });
+    
+    // Notificaciones toggle
+    const notificationToggle = document.getElementById('notification-toggle');
+    const notificationPanel = document.getElementById('notification-panel');
+    const closeNotifications = document.getElementById('close-notifications');
+    
+    notificationToggle.addEventListener('click', () => {
+      notificationPanel.classList.toggle('open');
+    });
+    
+    closeNotifications.addEventListener('click', () => {
+      notificationPanel.classList.remove('open');
+    });
+    
+    // Cerrar notificaciones al hacer clic fuera del panel
+    document.addEventListener('click', (event) => {
+      if (!notificationPanel.contains(event.target) && !notificationToggle.contains(event.target)) {
+        notificationPanel.classList.remove('open');
+      }
+    });
+    
+    // Calendario
+    document.addEventListener('DOMContentLoaded', function() {
+      const monthYearElement = document.getElementById('month-year');
+      const daysContainer = document.getElementById('calendar-days');
+      const prevMonthButton = document.getElementById('prev-month');
+      const nextMonthButton = document.getElementById('next-month');
+      
+      let currentDate = new Date();
+      
+      // Función para generar el calendario
+      function generateCalendar(year, month) {
+        daysContainer.innerHTML = '';
+        
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        const daysInMonth = lastDay.getDate();
+        
+        // Ajustar para que la semana comience en lunes (0 = lunes, 6 = domingo)
+        let startingDay = firstDay.getDay() - 1;
+        if (startingDay === -1) startingDay = 6; // Si es domingo (0), convertir a 6
+        
+        // Actualizar el encabezado del mes y año
+        const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+        monthYearElement.textContent = `${monthNames[month]} ${year}`;
+        
+        // Añadir espacios en blanco para los días anteriores al primer día del mes
+        for (let i = 0; i < startingDay; i++) {
+          const emptyDay = document.createElement('div');
+          emptyDay.classList.add('day', 'empty');
+          daysContainer.appendChild(emptyDay);
+        }
+        
+        // Añadir los días del mes
+        const today = new Date();
+        for (let i = 1; i <= daysInMonth; i++) {
+          const dayElement = document.createElement('div');
+          dayElement.classList.add('day');
+          dayElement.textContent = i;
+          
+          // Resaltar el día actual
+          if (year === today.getFullYear() && month === today.getMonth() && i === today.getDate()) {
+            dayElement.classList.add('today');
+          }
+          
+          // Añadir evento click para seleccionar día
+          dayElement.addEventListener('click', function() {
+            document.querySelectorAll('.day.selected').forEach(el => el.classList.remove('selected'));
+            this.classList.add('selected');
+            console.log(`Día seleccionado: ${i}/${month + 1}/${year}`);
+          });
+          
+          daysContainer.appendChild(dayElement);
+        }
+      }
+      
+      // Generar calendario inicial
+      generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
+      
+      // Eventos para cambiar de mes
+      prevMonthButton.addEventListener('click', function() {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
+      });
+      
+      nextMonthButton.addEventListener('click', function() {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
+      });
+    });
+  </script>
+</body>
+</html>

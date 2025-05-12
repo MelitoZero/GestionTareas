@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro Minimalista</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="login-styles.css">
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <!-- Logo -->
+      <div class="logo-container">
+        <img src="Recursosimg/LogoTilinJap.png" alt="Logo" class="logo">
+      </div>
+      
+      <h1>Crear Cuenta</h1>
+      
+      <form class="login-form">
+        <div class="form-group">
+          <label for="fullname">
+            <i class='bx bx-user'></i>
+          </label>
+          <input type="text" id="fullname" placeholder="Nombre completo" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">
+            <i class='bx bx-envelope'></i>
+          </label>
+          <input type="email" id="email" placeholder="Correo electrónico" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="password">
+            <i class='bx bx-lock-alt'></i>
+          </label>
+          <input type="password" id="password" placeholder="Contraseña" required>
+          <small class="password-hint">Mínimo 8 caracteres, incluyendo una letra mayúscula y un número</small>
+        </div>
+        
+        <div class="form-group">
+          <label for="confirm-password">
+            <i class='bx bx-lock-alt'></i>
+          </label>
+          <input type="password" id="confirm-password" placeholder="Confirmar contraseña" required>
+        </div>
+         <!-- terminos y condiciones codigo inecesario
+        <div class="terms-container">
+          <input type="checkbox" id="terms" required>
+          <label for="terms">Acepto los <a href="#">Términos y Condiciones</a> y la <a href="#">Política de Privacidad</a></label>
+        </div> -->
+        
+        <button type="submit" class="login-button">
+          Registrarse
+        </button>
+      </form>
+      
+      <div class="register-link">
+        ¿Ya tienes una cuenta? <a href="index.html">Iniciar sesión</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
