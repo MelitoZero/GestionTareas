@@ -32,7 +32,7 @@ app.get("/usuarios/:id", usuarioController.obtenerUsuarioPorID);
 app.put("/usuarios/:id", usuarioController.actualizarUsuario);
 app.delete("/usuarios/:id", usuarioController.eliminarUsuario);
 //Define rutas de listas
-app.get("/listas", listaController.obtenerListas);
+app.get("/listas:id_usuario", listaController.obtenerListas);
 app.put("/listas:id", listaController.registrarLista);
 
 

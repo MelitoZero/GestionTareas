@@ -1,6 +1,5 @@
 const { Lista } = require('../models');
 
-
 class listaDAO {
     constructor(){}
     //Función que crea lista 
@@ -36,9 +35,9 @@ class listaDAO {
         }
     }
     //Función que consulta todas las listas
-    async obtenerListas(){
+    async obtenerListasPorUsuario(){
         try {
-            const listas = await Lista.findAll();
+            const listas = await Lista.findAll({where: {id_usuario: userId}});
             return listas;
         } catch (error) {
             console.error('Error al consultar todas las listas', error);

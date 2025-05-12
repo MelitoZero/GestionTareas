@@ -55,6 +55,13 @@ class listaController {
             res.status(500).json({ error: 'Error al obtener las listas' });
         }
     }
+    async obtenerListasPorUsuario(userId){
+        try {
+            return await listaDAO.obtenerListasPorUsuario(userId);
+        } catch (error) {
+            res.status(500).json({ error: 'Error al obtener las listas' });
+        }
+    }
 
     // Función que consulta una lista por ID
     async obtenerListaPorID(req, res) {
