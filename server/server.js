@@ -35,10 +35,6 @@ app.delete("/usuarios/:id", usuarioController.eliminarUsuario);
 app.get("/listas", listaController.obtenerListas);
 app.put("/listas:id", listaController.registrarLista);
 
-//Ruta de prueba
-/*app.get("/", (req, res)=> {
-    res.send("Servidor funcionando ");
-});*/
 
 //Inicia el servidor
 app.listen(PORT, ()=> {
