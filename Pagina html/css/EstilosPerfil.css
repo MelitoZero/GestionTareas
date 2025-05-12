@@ -145,3 +145,107 @@ body {
     flex-direction: column;
   }
 }
+
+/* Campos de edición */
+.info-edit {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+/* Botón Guardar */
+.btn-save {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-save:hover {
+  background-color: #388E3C;
+}
+
+/* Botón Cancelar */
+.btn-cancel {
+  background-color: #9E9E9E;
+  color: white;
+}
+
+.btn-cancel:hover {
+  background-color: #757575;
+}
+
+/* Ajustar diseño de botones en modo edición */
+.profile-actions.editing {
+  flex-direction: row;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .profile-actions.editing {
+    flex-direction: column;
+  }
+}
+
+/* Contenedor de contraseña */
+.password-container {
+  position: relative;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* Campo de contraseña */
+.info-edit[type="password"],
+.info-edit[type="text"] {
+  padding: 0.5rem;
+  padding-right: 2.5rem; /* Espacio para el ícono */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+/* Ícono para mostrar/ocultar contraseña */
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.password-toggle:hover {
+  color: #333;
+}
+
+/* Barra de fortaleza de contraseña */
+.password-strength {
+  height: 4px;
+  width: 0%;
+  background-color: #f44336;
+  margin-top: 0.5rem;
+  border-radius: 2px;
+  transition: width 0.3s, background-color 0.3s;
+}
+
+/* Texto de ayuda para contraseña */
+.password-hint {
+  display: block;
+  color: #666;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 600px) {
+  .password-container {
+    margin-top: 0.25rem;
+  }
+  
+  .password-hint {
+    font-size: 0.7rem;
+  }
+}

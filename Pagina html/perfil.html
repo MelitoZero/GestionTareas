@@ -36,6 +36,17 @@
         </div>
         
         <div class="info-item">
+          <span class="info-label">Contraseña:</span>
+          <div class="password-container" style="display: none;">
+            <input type="password" class="info-edit" id="password-edit" placeholder="Nueva contraseña">
+            <i class='bx bx-hide password-toggle' id="password-toggle"></i>
+            <div class="password-strength" id="password-strength"></div>
+            <small class="password-hint">Mínimo 8 caracteres, 1 mayúscula y 1 número</small>
+          </div>
+          <span class="info-value" id="password-value">••••••••</span>
+        </div>
+        
+        <div class="info-item">
           <span class="info-label">Fecha de Registro:</span>
           <span class="info-value">2025-01-01</span>
         </div>
@@ -62,20 +73,42 @@
     const nameEdit = document.getElementById('name-edit');
     const emailValue = document.getElementById('email-value');
     const emailEdit = document.getElementById('email-edit');
+    const passwordValue = document.getElementById('password-value');
+    const passwordContainer = document.querySelector('.password-container');
+    const passwordEdit = document.getElementById('password-edit');
+    const passwordToggle = document.getElementById('password-toggle');
+    const passwordStrength = document.getElementById('password-strength');
     
     // Modo edición
     let isEditing = false;
+    let originalPassword = ""; // Para almacenar la contraseña original al cancelar
     
     // Habilitar edición
     editBtn.addEventListener('click', function() {
       isEditing = true;
+      originalPassword = passwordEdit.value; // Guardar contraseña actual
       toggleEditMode();
     });
     
     // Guardar cambios
     saveBtn.addEventListener('click', function() {
+      // Validar contraseña si se modificó
+      if (passwordEdit.value && passwordEdit.value !== originalPassword) {
+        if (!validatePassword(passwordEdit.value)) {
+          alert('La contraseña no cumple con los requisitos mínimos');
+          return;
+        }
+      }
+      
       nameValue.textContent = nameEdit.value;
       emailValue.textContent = emailEdit.value;
+      
+      // Solo actualizar contraseña si se cambió
+      if (passwordEdit.value && passwordEdit.value !== originalPassword) {
+        passwordValue.textContent = '••••••••'; // Ocultar contraseña real
+        alert('Contraseña actualizada correctamente');
+      }
+      
       isEditing = false;
       toggleEditMode();
       alert('Cambios guardados correctamente');
@@ -86,6 +119,7 @@
       // Restaurar valores originales
       nameEdit.value = nameValue.textContent;
       emailEdit.value = emailValue.textContent;
+      passwordEdit.value = originalPassword;
       isEditing = false;
       toggleEditMode();
     });
@@ -98,6 +132,24 @@
       }
     });
     
+    // Mostrar/ocultar contraseña
+    passwordToggle.addEventListener('click', function() {
+      if (passwordEdit.type === 'password') {
+        passwordEdit.type = 'text';
+        passwordToggle.classList.remove('bx-hide');
+        passwordToggle.classList.add('bx-show');
+      } else {
+        passwordEdit.type = 'password';
+        passwordToggle.classList.remove('bx-show');
+        passwordToggle.classList.add('bx-hide');
+      }
+    });
+    
+    // Validar fortaleza de contraseña en tiempo real
+    passwordEdit.addEventListener('input', function() {
+      updatePasswordStrength(passwordEdit.value);
+    });
+    
     // Función para cambiar entre modos de visualización y edición
     function toggleEditMode() {
       if (isEditing) {
@@ -106,6 +158,8 @@
         nameEdit.style.display = 'block';
         emailValue.style.display = 'none';
         emailEdit.style.display = 'block';
+        passwordValue.style.display = 'none';
+        passwordContainer.style.display = 'block';
         
         // Mostrar botones guardar/cancelar y ocultar editar
         editBtn.style.display = 'none';
@@ -117,11 +171,49 @@
         nameEdit.style.display = 'none';
         emailValue.style.display = 'block';
         emailEdit.style.display = 'none';
+        passwordValue.style.display = 'block';
+        passwordContainer.style.display = 'none';
         
         // Mostrar botón editar y ocultar guardar/cancelar
         editBtn.style.display = 'block';
         saveBtn.style.display = 'none';
         cancelBtn.style.display = 'none';
+        
+        // Resetear indicador de fortaleza
+        passwordStrength.style.width = '0%';
+      }
+    }
+    
+    // Validar contraseña
+    function validatePassword(password) {
+      // Mínimo 8 caracteres, al menos 1 mayúscula y 1 número
+      const regex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+      return regex.test(password);
+    }
+    
+    // Actualizar indicador de fortaleza de contraseña
+    function updatePasswordStrength(password) {
+      let strength = 0;
+      
+      // Longitud
+      if (password.length > 0) strength += 20;
+      if (password.length >= 8) strength += 20;
+      
+      // Complejidad
+      if (/[A-Z]/.test(password)) strength += 20;
+      if (/\d/.test(password)) strength += 20;
+      if (/[^A-Za-z0-9]/.test(password)) strength += 20;
+      
+      // Actualizar barra de progreso
+      passwordStrength.style.width = strength + '%';
+      
+      // Cambiar color según fortaleza
+      if (strength < 40) {
+        passwordStrength.style.backgroundColor = '#f44336'; // Rojo
+      } else if (strength < 80) {
+        passwordStrength.style.backgroundColor = '#ff9800'; // Naranja
+      } else {
+        passwordStrength.style.backgroundColor = '#4CAF50'; // Verde
       }
     }
   </script>
