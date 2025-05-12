@@ -1,6 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const usuarioController = require('../controllers/usuarioController');
+const tareaController = require('../controllers/tareaController');
+const reconocimientoController = require('../controllers/reconocimientoController');
+const listaController = require('../controllers/listaController');
+const calendarioController = require('../controllers/calendarioController');
 const app = express();
 const PORT = 3000;
 const jwt = require("jsonwebtoken");
@@ -30,6 +34,42 @@ app.get("/usuarios", usuarioController.obtenerUsuarios);
 app.get("/usuarios/:id", usuarioController.obtenerUsuarioPorID);
 app.put("/usuarios/:id", usuarioController.actualizarUsuario);
 app.delete("/usuarios/:id", usuarioController.eliminarUsuario);
+
+// Define rutas de tareas
+app.post("/tareas", tareaController.registrarTarea);
+app.get("/tareas", tareaController.obtenerTareas);
+app.get("/tareas/:id", tareaController.obtenerTareaPorID);
+app.put("/tareas/:id", tareaController.actualizarTarea);
+app.delete("/tareas/:id", tareaController.eliminarTarea);
+
+//Define rutas de recordatorio
+app.post("/recordatorios", recordatorioController.registrarRecordatorio);
+app.get("/recordatorios", recordatorioController.obtenerRecordatorios);
+app.get("/recordatorios/:id", recordatorioController.obtenerRecordatorioPorID);
+app.put("/recordatorios/:id", recordatorioController.actualizarRecordatorio);
+app.delete("/recordatorios/:id", recordatorioController.eliminarRecordatorio);
+
+//Define rutas de reconocimiento
+app.post("/reconocimientos", reconocimientoController.registrarReconocimiento);
+app.get("/reconocimientos", reconocimientoController.obtenerReconocimientos);
+app.get("/reconocimientos/:id", reconocimientoController.obtenerReconocimientoPorID);
+app.put("/reconocimientos/:id", reconocimientoController.actualizarReconocimiento);
+app.delete("/reconocimientos/:id", reconocimientoController.eliminarReconocimiento);
+
+// Definir rutas de listas
+app.post("/listas", listaController.registrarLista);
+app.get("/listas", listaController.obtenerListas);
+app.get("/listas/:id", listaController.obtenerListaPorID);
+app.put("/listas/:id", listaController.actualizarLista);
+app.delete("/listas/:id", listaController.eliminarLista);
+
+// Definir rutas de calendarios
+app.post("/calendarios", calendarioController.registrarCalendario);
+app.get("/calendarios", calendarioController.obtenerCalendarios);
+app.get("/calendarios/:id", calendarioController.obtenerCalendarioPorID);
+app.put("/calendarios/:id", calendarioController.actualizarCalendario);
+app.delete("/calendarios/:id", calendarioController.eliminarCalendario);
+
 
 
 //Ruta de prueba
