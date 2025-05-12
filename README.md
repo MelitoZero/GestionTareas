@@ -14,5 +14,7 @@ Jorge Manuel Enriquez Dominguez
 Para conectar la Base de datos se necesita hacer los siguientes comandos en la terminal:
     1.- npx sequelize db:create
     2.- npx sequelize db:migrate
+Comandos para correr la aplicación en la terminal de comandos
+    1.- node .\index.js
 Al hacer esto ya se sincroniza los modelos de la bd con la bd y se puede proceder a hacer cambios dentro del DataAccess    
 
