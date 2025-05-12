@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const usuarioController = require('../controllers/usuarioController');
+const listaController = require('../controllers/listaController');
 const app = express();
 const PORT = 3000;
 const jwt = require("jsonwebtoken");
@@ -30,7 +31,9 @@ app.get("/usuarios", usuarioController.obtenerUsuarios);
 app.get("/usuarios/:id", usuarioController.obtenerUsuarioPorID);
 app.put("/usuarios/:id", usuarioController.actualizarUsuario);
 app.delete("/usuarios/:id", usuarioController.eliminarUsuario);
-
+//Define rutas de listas
+app.get("/listas", listaController.obtenerListas);
+app.put("/listas:id", listaController.registrarLista);
 
 //Ruta de prueba
 /*app.get("/", (req, res)=> {
