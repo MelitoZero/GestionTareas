@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Perfil</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+  <header class="header">
+    <h1 class="logo">Mi Perfil</h1>
+    <nav class="nav">
+      <a href="/View/NuevoMenu/Menu.html" class="nav-link">Menú</a>
+      <a href="/View/NuevoLogin/index.html" class="nav-link">Cerrar Sesión</a>
+    </nav>
+  </header>
+  
+  <main class="main-content">
+    <div class="profile-card">
+      <div class="profile-header">
+        <h2>Información del Usuario</h2>
+      </div>
+      
+      <div class="profile-info">
+        <div class="info-item">
+          <span class="info-label">Nombre:</span>
+          <span class="info-value">Usuario de Prueba</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="info-label">Correo:</span>
+          <span class="info-value">usuario@correo.com</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="info-label">Fecha de Registro:</span>
+          <span class="info-value">2025-01-01</span>
+        </div>
+      </div>
+      
+      <div class="profile-actions">
+        <button class="btn btn-edit">Editar Perfil</button>
+        <button class="btn btn-delete">Eliminar Cuenta</button>
+      </div>
+    </div>
+  </main>
+  
+  <script>
+    // Funcionalidad para los botones
+    document.querySelector('.btn-edit').addEventListener('click', function() {
+      alert('Función para editar perfil');
+    });
+    
+    document.querySelector('.btn-delete').addEventListener('click', function() {
+      if (confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.')) {
+        alert('Cuenta eliminada');
+        window.location.href = 'index.html';
+      }
+    });
+  </script>
+</body>
+</html>
