@@ -40,7 +40,7 @@
       </div>
       
       <div class="profile-actions">
-        <button class="btn btn-edit">Editar Perfil</button>
+        <button class="btn btn-edit" onclick="location.href='/ActualizarUsuario/Usuario.html'"">Editar Perfil</button>
         <button class="btn btn-delete">Eliminar Cuenta</button>
       </div>
     </div>
@@ -48,9 +48,7 @@
   
   <script>
     // Funcionalidad para los botones
-    document.querySelector('.btn-edit').addEventListener('click', function() {
-      alert('Función para editar perfil');
-    });
+
     
     document.querySelector('.btn-delete').addEventListener('click', function() {
       if (confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.')) {
