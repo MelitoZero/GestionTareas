@@ -69,8 +69,7 @@ body {
   margin-right: 0.75rem;
   font-size: 1.25rem;
 }
-
-/* Notification button */
+/* Notificaciones */
 .notification-button {
   background: none;
   border: none;
@@ -107,25 +106,102 @@ body {
   justify-content: center;
 }
 
+.notification-panel {
+  position: absolute;
+  top: 60px;
+  left: 1rem;
+  right: 1rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f0f0f0;
+  z-index: 200;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.notification-panel.open {
+  max-height: 400px;
+  opacity: 1;
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.notification-header h3 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: #999;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notification-list {
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.notification-item {
+  display: flex;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s;
+}
+
+.notification-item:hover {
+  background-color: #f9f9f9;
+}
+
+.notification-icon {
+  margin-right: 0.75rem;
+  font-size: 1.25rem;
+  color: #1890ff;
+  display: flex;
+  align-items: flex-start;
+}
+
+.notification-content {
+  flex: 1;
+}
+
+.notification-text {
+  font-size: 0.85rem;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.notification-time {
+  font-size: 0.75rem;
+  color: #999;
+}
+
 /* Main content */
 .main-content {
   flex: 1;
   margin-left: 250px;
   padding: 2rem;
-  max-width: 100%;
 }
 
-.content-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.content-header h1 {
+.main-content h1 {
   font-size: 1.5rem;
+  margin-bottom: 1.5rem;
   font-weight: 500;
-  color: #333;
 }
 
 /* Buttons */

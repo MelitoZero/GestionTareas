@@ -36,17 +36,50 @@
         <i class='bx bx-user'></i>
         <span>Perfil</span>
       </a>
-      <a href="crear-tarea.html" class="nav-item">
-        <i class='bx bx-plus-circle'></i>
-        <span>Crear Nueva Tarea</span>
-      </a>
-      <a href="lista-tareas.html" class="nav-item active">
+      <a href="404.html" class="nav-item active">
         <i class='bx bx-task'></i>
-        <span>Lista de Tareas</span>
+        <span>Boton pendiente de tareas ya saben cual</span>
       </a>
     </nav>
+    <!-- Panel de notificaciones (inicialmente oculto) -->
+    <div class="notification-panel" id="notification-panel">
+      <div class="notification-header">
+        <h3>Reconocimientos</h3>
+        <button class="close-button" id="close-notifications">
+          <i class='bx bx-x'></i>
+        </button>
+      </div>
+      <div class="notification-list">
+        <div class="notification-item">
+          <div class="notification-icon">
+            <i class='bx bx-medal'></i>
+          </div>
+          <div class="notification-content">
+            <p class="notification-text">Has completado todas tus tareas de hoy</p>
+            <span class="notification-time">Hace 2 horas</span>
+          </div>
+        </div>
+        <div class="notification-item">
+          <div class="notification-icon">
+            <i class='bx bx-trophy'></i>
+          </div>
+          <div class="notification-content">
+            <p class="notification-text">¡Felicidades! Has alcanzado 5 días consecutivos completando tareas</p>
+            <span class="notification-time">Ayer</span>
+          </div>
+        </div>
+        <div class="notification-item">
+          <div class="notification-icon">
+            <i class='bx bx-star'></i>
+          </div>
+          <div class="notification-content">
+            <p class="notification-text">Has recibido un reconocimiento por tu proyecto</p>
+            <span class="notification-time">Hace 3 días</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </aside>
-  
   <!-- Main content -->
   <main class="main-content">
     <div class="content-header">
@@ -203,6 +236,7 @@
       </div>
     </div>
   </div>
+
   
   <script>
     // Mobile menu toggle
@@ -211,6 +245,31 @@
     
     mobileMenuToggle.addEventListener('click', () => {
       sidebar.classList.toggle('open');
+    });
+    
+    // Notificaciones toggle - CÓDIGO ARREGLADO
+    const notificationToggle = document.getElementById('notification-toggle');
+    const notificationPanel = document.getElementById('notification-panel');
+    const closeNotifications = document.getElementById('close-notifications');
+    
+    // Añadir evento click al botón de notificaciones
+    notificationToggle.addEventListener('click', (event) => {
+      // Detener la propagación del evento para evitar que se cierre inmediatamente
+      event.stopPropagation();
+      notificationPanel.classList.toggle('open');
+    });
+    
+    // Añadir evento click al botón de cerrar notificaciones
+    closeNotifications.addEventListener('click', () => {
+      notificationPanel.classList.remove('open');
+    });
+    
+    // Cerrar notificaciones al hacer clic fuera del panel
+    document.addEventListener('click', (event) => {
+      // Verificar si el clic fue fuera del panel y del botón de notificaciones
+      if (!notificationPanel.contains(event.target) && event.target !== notificationToggle && !notificationToggle.contains(event.target)) {
+        notificationPanel.classList.remove('open');
+      }
     });
     
     // Modal functionality
@@ -393,5 +452,9 @@
       }
     });
   </script>
+
+
+  <!-- Intento para separar el script (Aun no le entiendo jsjsjs sorry)
+<script src="ScriptsJava/ListaTareas.js"></script> -->
 </body>
 </html>
