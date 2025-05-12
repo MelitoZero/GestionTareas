@@ -5,38 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tilin Registro</title>
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="Style.css">
+  <link rel="stylesheet" href="NuevoRegistro/Style.css">
 </head>
 <body>
   <div class="login-container">
     <div class="login-card">
       <!-- Logo -->
       <div class="logo-container">
-        <img src="/View/Imagen/LogoTilinJap.png" alt="Logo" class="logo">
+        <img src="/Imagen/LogoTilinJap.png" alt="Logo" class="logo">
       </div>
       
       <h1>Crear Cuenta</h1>
       
-      <form class="login-form">
+      <form class="login-form" id="registroForm">
         <div class="form-group">
           <label for="fullname">
             <i class='bx bx-user'></i>
           </label>
-          <input type="text" id="fullname" placeholder="Nombre completo" required>
+          <input type="text" id="nombre" placeholder="Nombre completo" required>
         </div>
         
         <div class="form-group">
           <label for="email">
             <i class='bx bx-envelope'></i>
           </label>
-          <input type="email" id="email" placeholder="Correo electrónico" required>
+          <input type="email" id="correo" placeholder="Correo electrónico" required>
         </div>
         
         <div class="form-group">
           <label for="password">
             <i class='bx bx-lock-alt'></i>
           </label>
-          <input type="password" id="password" placeholder="Contraseña" required>
+          <input type="password" id="contrasena" placeholder="Contraseña" required>
           <small class="password-hint">Mínimo 8 caracteres, incluyendo una letra mayúscula y un número</small>
         </div>
         
@@ -44,7 +44,7 @@
           <label for="confirm-password">
             <i class='bx bx-lock-alt'></i>
           </label>
-          <input type="password" id="confirm-password" placeholder="Confirmar contraseña" required>
+          <input type="password" id="verificar" placeholder="Confirmar contraseña" required>
         </div>
          <!-- terminos y condiciones codigo inecesario
         <div class="terms-container">
@@ -58,9 +58,10 @@
       </form>
       
       <div class="register-link">
-        ¿Ya tienes una cuenta? <a href="/View/NuevoLogin/index.html">Iniciar sesión</a>
+        ¿Ya tienes una cuenta? <a href="NuevoLogin/index.html">Iniciar sesión</a>
       </div>
     </div>
   </div>
+  <script src="Register.js"></script>
 </body>
 </html>
