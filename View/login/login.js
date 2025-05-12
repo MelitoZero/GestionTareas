@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
             //Verificación de token
             const data = await response.json();
             if (data.token) {
-                localStorage.setItem("token", data.token);
+                sessionStorage.setItem("token", data.token);
                 alert("Inicio de sesión exitoso");
                 window.location.href = "/View/menu/main.html";
             }else {
