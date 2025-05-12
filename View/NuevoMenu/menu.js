@@ -4,6 +4,6 @@ document.addEventListener("DOMContentLoaded", function() {
         closeBtn.addEventListener("click", function() {
             sessionStorage.removeItem("token");
             alert("Sesión cerrada");
-            window.location.href = "/View/login/index.html";
+            window.location.href = "/NuevoLogin/index.html";
         });    
 });
