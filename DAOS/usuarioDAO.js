@@ -26,15 +26,19 @@ class UsuarioDAO {
         }        
     }
     //Función que actualiza a un usuario
-    async actualizarUsuario(id, nombre, correo, contrasena){
+    async actualizarUsuario(id, nombre, correo, contrasena) {
         try {
-            await Usuario.update({nombre, correo, contrasena}, {where: {id}});
-            const usuarioActualizado = await Usuario.findByPk(id);
-            return usuarioActualizado;
+            const [usuariosAfectados] = await Usuario.update(
+                { nombre, correo, contrasena },
+                { where: { id } }
+            );
+            return [usuariosAfectados]; 
         } catch (error) {
             console.error('Error al actualizar el usuario', error);
+            throw error;
         }
     }
+    
     //Función que consulta todos los usuarios
     async obtenerUsuarios(){
         try {
@@ -45,9 +49,9 @@ class UsuarioDAO {
         }
     }
     //Función que consulta un usuario
-    async obtenerUsuarioPorID(id){
+    async obtenerUsuarioPorCorreo(correo){
         try {
-            const usuario = await Usuario.findByPk(id);
+            const usuario = await Usuario.findOne({ where: {correo}});
             if (!usuario) {
                 throw new Error('Usuario no encontrado');
             }
