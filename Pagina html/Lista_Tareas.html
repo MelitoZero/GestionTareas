@@ -16,7 +16,7 @@
   <!-- Sidebar -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
-      <h2>Menu</h2>
+      <h2>505 Arctic monkeys Ref</h2>
       <!-- Botón de notificaciones -->
       <button class="notification-button" id="notification-toggle">
         <i class='bx bx-bell'></i>
@@ -38,7 +38,7 @@
       </a>
       <a href="404.html" class="nav-item active">
         <i class='bx bx-task'></i>
-        <span>Boton pendiente de tareas ya saben cual</span>
+        <span>Este boton te llev al 404 para que veas el diseño</span>
       </a>
     </nav>
     <!-- Panel de notificaciones (inicialmente oculto) -->
@@ -87,6 +87,9 @@
       <div class="actions">
         <button id="btn-add-task" class="btn btn-primary">
           <i class='bx bx-plus'></i> Nueva Tarea
+        </button>
+        <button id="btn-add-list" class="btn btn-primary" style="margin-left: 10px;">
+          <i class='bx bx-list-plus'></i> Nueva Lista
         </button>
       </div>
     </div>
@@ -210,6 +213,10 @@
             <input type="text" id="task-name-input" required>
           </div>
           <div class="form-group">
+            <label for="task-description-input">Descripción</label>
+            <textarea id="task-description-input" rows="3" class="form-textarea"></textarea>
+          </div>
+          <div class="form-group">
             <label for="task-category-input">Categoría</label>
             <select id="task-category-input" required>
               <option value="work">Trabajo</option>
@@ -228,6 +235,16 @@
               <option value="completed">Completada</option>
             </select>
           </div>
+          <div class="form-group">
+            <label for="task-list-input">Lista</label>
+            <select id="task-list-input">
+              <option value="">Seleccionar lista</option>
+              <option value="list-1">Lista de compras</option>
+              <option value="list-2">Tareas del hogar</option>
+              <option value="list-3">Proyectos de trabajo</option>
+              <option value="list-4">Estudios</option>
+            </select>
+          </div>
           <div class="form-actions">
             <button type="button" class="btn btn-secondary" id="cancel-task">Cancelar</button>
             <button type="submit" class="btn btn-primary" id="save-task">Guardar</button>
@@ -237,6 +254,34 @@
     </div>
   </div>
 
+  <!-- Modal para crear nueva lista -->
+  <div class="modal" id="list-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="list-modal-title">Nueva Lista</h2>
+        <button class="close-button" id="close-list-modal">
+          <i class='bx bx-x'></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="list-form">
+          <input type="hidden" id="list-id">
+          <div class="form-group">
+            <label for="list-title-input">Título</label>
+            <input type="text" id="list-title-input" required>
+          </div>
+          <div class="form-group">
+            <label for="list-description-input">Descripción</label>
+            <textarea id="list-description-input" rows="4" class="form-textarea"></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" id="cancel-list">Cancelar</button>
+            <button type="submit" class="btn btn-primary" id="save-list">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
  
   <script>
     // Mobile menu toggle
@@ -272,7 +317,15 @@
       }
     });
     
-    // Modal functionality
+    // Listas disponibles (simuladas)
+    const availableLists = [
+      { id: 'list-1', title: 'Lista de compras' },
+      { id: 'list-2', title: 'Tareas del hogar' },
+      { id: 'list-3', title: 'Proyectos de trabajo' },
+      { id: 'list-4', title: 'Estudios' }
+    ];
+    
+    // Modal functionality for tasks
     const taskModal = document.getElementById('task-modal');
     const closeModal = document.getElementById('close-modal');
     const cancelTask = document.getElementById('cancel-task');
@@ -285,19 +338,76 @@
       modalTitle.textContent = 'Nueva Tarea';
       document.getElementById('task-id').value = '';
       document.getElementById('task-name-input').value = '';
+      document.getElementById('task-description-input').value = '';
       document.getElementById('task-category-input').value = 'work';
       document.getElementById('task-deadline-input').value = '';
       document.getElementById('task-status-input').value = 'pending';
+      document.getElementById('task-list-input').value = '';
       taskModal.classList.add('open');
     });
     
-    // Close modal
+    // Close task modal
     closeModal.addEventListener('click', () => {
       taskModal.classList.remove('open');
     });
     
     cancelTask.addEventListener('click', () => {
       taskModal.classList.remove('open');
+    });
+    
+    // Modal functionality for lists
+    const listModal = document.getElementById('list-modal');
+    const closeListModal = document.getElementById('close-list-modal');
+    const cancelList = document.getElementById('cancel-list');
+    const btnAddList = document.getElementById('btn-add-list');
+    const listModalTitle = document.getElementById('list-modal-title');
+    const listForm = document.getElementById('list-form');
+    
+    // Open modal for new list
+    btnAddList.addEventListener('click', () => {
+      listModalTitle.textContent = 'Nueva Lista';
+      document.getElementById('list-id').value = '';
+      document.getElementById('list-title-input').value = '';
+      document.getElementById('list-description-input').value = '';
+      listModal.classList.add('open');
+    });
+    
+    // Close list modal
+    closeListModal.addEventListener('click', () => {
+      listModal.classList.remove('open');
+    });
+    
+    cancelList.addEventListener('click', () => {
+      listModal.classList.remove('open');
+    });
+    
+    // Form submission for list
+    listForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const listId = document.getElementById('list-id').value;
+      const listTitle = document.getElementById('list-title-input').value;
+      const listDescription = document.getElementById('list-description-input').value;
+      
+      // Here you would typically send an API request to save the list
+      console.log('List data:', {
+        id: listId || 'new',
+        title: listTitle,
+        description: listDescription
+      });
+      
+      // Close modal
+      listModal.classList.remove('open');
+      
+      // Actualizar el selector de listas en el formulario de tareas
+      const listSelect = document.getElementById('task-list-input');
+      const newOption = document.createElement('option');
+      newOption.value = `list-${Date.now()}`; // Generar un ID único
+      newOption.textContent = listTitle;
+      listSelect.appendChild(newOption);
+      
+      // Mostrar mensaje de éxito
+      alert(`Lista "${listTitle}" creada exitosamente`);
     });
     
     // Edit task
@@ -310,9 +420,12 @@
         modalTitle.textContent = 'Editar Tarea';
         document.getElementById('task-id').value = taskId;
         document.getElementById('task-name-input').value = taskRow.querySelector('.task-name').textContent;
+        // Para la descripción, podríamos almacenarla como un atributo de datos en la fila
+        document.getElementById('task-description-input').value = taskRow.getAttribute('data-description') || '';
         document.getElementById('task-category-input').value = taskRow.getAttribute('data-category');
         document.getElementById('task-deadline-input').value = taskRow.querySelector('.task-deadline').textContent;
         document.getElementById('task-status-input').value = taskRow.getAttribute('data-status');
+        document.getElementById('task-list-input').value = taskRow.getAttribute('data-list') || '';
         
         taskModal.classList.add('open');
       });
@@ -361,23 +474,27 @@
       });
     });
     
-    // Form submission
+    // Form submission for task
     taskForm.addEventListener('submit', (e) => {
       e.preventDefault();
       
       const taskId = document.getElementById('task-id').value;
       const taskName = document.getElementById('task-name-input').value;
+      const taskDescription = document.getElementById('task-description-input').value;
       const taskCategory = document.getElementById('task-category-input').value;
       const taskDeadline = document.getElementById('task-deadline-input').value;
       const taskStatus = document.getElementById('task-status-input').value;
+      const taskList = document.getElementById('task-list-input').value;
       
       // Here you would typically send an API request to save the task
       console.log('Task data:', {
         id: taskId || 'new',
         name: taskName,
+        description: taskDescription,
         category: taskCategory,
         deadline: taskDeadline,
-        status: taskStatus
+        status: taskStatus,
+        list: taskList
       });
       
       // Close modal
@@ -388,6 +505,7 @@
         const taskRow = document.getElementById(`task-${taskId}`);
         
         taskRow.querySelector('.task-name').textContent = taskName;
+        taskRow.setAttribute('data-description', taskDescription);
         
         const categoryText = taskCategory === 'work' ? 'Trabajo' : 
                             taskCategory === 'personal' ? 'Personal' : 'Estudio';
@@ -401,10 +519,100 @@
         
         taskRow.setAttribute('data-status', taskStatus);
         taskRow.setAttribute('data-category', taskCategory);
+        taskRow.setAttribute('data-list', taskList);
         
         // Update complete button state
         const completeButton = taskRow.querySelector('.btn-complete');
         completeButton.disabled = taskStatus === 'completed';
+      } else {
+        // Si es una nueva tarea, podríamos añadirla a la tabla
+        // (Este código es solo para demostración)
+        const taskList = document.getElementById('task-list');
+        const newTaskId = Date.now();
+        
+        const newRow = document.createElement('tr');
+        newRow.id = `task-${newTaskId}`;
+        newRow.className = 'task-item';
+        newRow.setAttribute('data-status', taskStatus);
+        newRow.setAttribute('data-category', taskCategory);
+        newRow.setAttribute('data-description', taskDescription);
+        newRow.setAttribute('data-list', taskList);
+        
+        const categoryText = taskCategory === 'work' ? 'Trabajo' : 
+                            taskCategory === 'personal' ? 'Personal' : 'Estudio';
+        
+        newRow.innerHTML = `
+          <td class="task-name">${taskName}</td>
+          <td class="task-category">${categoryText}</td>
+          <td class="task-deadline">${taskDeadline}</td>
+          <td class="task-status"><span class="status-badge ${taskStatus}">${taskStatus === 'pending' ? 'Pendiente' : 'Completada'}</span></td>
+          <td class="task-actions">
+            <button class="btn-icon btn-edit" data-task-id="${newTaskId}">
+              <i class='bx bx-edit'></i>
+            </button>
+            <button class="btn-icon btn-complete" data-task-id="${newTaskId}" ${taskStatus === 'completed' ? 'disabled' : ''}>
+              <i class='bx bx-check'></i>
+            </button>
+            <button class="btn-icon btn-delete" data-task-id="${newTaskId}">
+              <i class='bx bx-trash'></i>
+            </button>
+          </td>
+        `;
+        
+        taskList.appendChild(newRow);
+        
+        // Ocultar el mensaje de "no hay tareas"
+        document.getElementById('no-tasks-message').style.display = 'none';
+        
+        // Añadir event listeners a los nuevos botones
+        const newEditButton = newRow.querySelector('.btn-edit');
+        const newCompleteButton = newRow.querySelector('.btn-complete');
+        const newDeleteButton = newRow.querySelector('.btn-delete');
+        
+        newEditButton.addEventListener('click', function() {
+          const taskId = this.getAttribute('data-task-id');
+          const taskRow = document.getElementById(`task-${taskId}`);
+          
+          modalTitle.textContent = 'Editar Tarea';
+          document.getElementById('task-id').value = taskId;
+          document.getElementById('task-name-input').value = taskRow.querySelector('.task-name').textContent;
+          document.getElementById('task-description-input').value = taskRow.getAttribute('data-description') || '';
+          document.getElementById('task-category-input').value = taskRow.getAttribute('data-category');
+          document.getElementById('task-deadline-input').value = taskRow.querySelector('.task-deadline').textContent;
+          document.getElementById('task-status-input').value = taskRow.getAttribute('data-status');
+          document.getElementById('task-list-input').value = taskRow.getAttribute('data-list') || '';
+          
+          taskModal.classList.add('open');
+        });
+        
+        newCompleteButton.addEventListener('click', function() {
+          const taskId = this.getAttribute('data-task-id');
+          const taskRow = document.getElementById(`task-${taskId}`);
+          
+          taskRow.setAttribute('data-status', 'completed');
+          const statusBadge = taskRow.querySelector('.status-badge');
+          statusBadge.textContent = 'Completada';
+          statusBadge.classList.remove('pending');
+          statusBadge.classList.add('completed');
+          
+          this.disabled = true;
+          
+          console.log(`Task ${taskId} marked as completed`);
+        });
+        
+        newDeleteButton.addEventListener('click', function() {
+          const taskId = this.getAttribute('data-task-id');
+          
+          if (confirm('¿Estás seguro de que deseas eliminar esta tarea?')) {
+            document.getElementById(`task-${taskId}`).remove();
+            
+            if (document.querySelectorAll('.task-item').length === 0) {
+              document.getElementById('no-tasks-message').style.display = 'flex';
+            }
+            
+            console.log(`Task ${taskId} deleted`);
+          }
+        });
       }
     });
     
@@ -452,10 +660,5 @@
       }
     });
   </script>
-  
-
-  <!-- Intento para separar el script 
-   (Aun no le entiendo jsjsjs sorry tengo que poner todo el script lista tareas js)
-<script src="ScriptsJava/ListaTareas.js"></script> -->
 </body>
 </html>
