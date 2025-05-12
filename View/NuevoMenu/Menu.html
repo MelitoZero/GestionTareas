@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menú Tilin</title>
+  <title>Menú Minimalista</title>
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="Style.css">
-  <script src="/auth/auth.js"></script>
 </head>
 <body>
   <!-- Mobile menu button -->
@@ -25,23 +24,24 @@
       </button>
     </div>
     <nav class="sidebar-nav">
-      <a id="close" class="nav-item">
+      <a href="../NuevoLogin/index.html" class="nav-item">
         <i class='bx bx-log-out'></i>
         <span>Cerrar sesión</span>
       </a>
-      <a href="/Perfil/Perfil.html" class="nav-item">
+      <a href="../Perfil/Perfil.html" class="nav-item">
         <i class='bx bx-user'></i>
         <span>Perfil</span>
       </a>
-      <a href="/CrearTarea/crearTarea.html" class="nav-item">
+      <!-- 
+      
+      //Esta cosa ya no se usa se paso a lista de tarea aunque deberiamos de haberlo puesto en el menu de calendario inicial//
+
+      <a href="crear_tarea.html" class="nav-item">
         <i class='bx bx-plus-circle'></i>
         <span>Crear Nueva Tarea</span>
       </a>
-      <a href="/CrearLista/CrearLista.html" class="nav-item">
-        <i class='bx bx-plus-circle'></i>
-        <span>Crear Nueva Lista</span>
-      </a>
-      <a href="/listaTarea/listaT.html" class="nav-item">
+      -->
+      <a href="../ListaTarea/ListaTareas.html" class="nav-item">
         <i class='bx bx-task'></i>
         <span>Lista de Tareas</span>
       </a>
@@ -128,7 +128,7 @@
       <i class='bx bx-chevron-right'></i>
     </button>
   </div>
-  <script src="/NuevoMenu/menu.js"></script>
+  
   <script>
     // Mobile menu toggle
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
