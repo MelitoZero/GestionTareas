@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const data = await response.json();
         if (data.token) {
             sessionStorage.setItem("token", data.token);
-            sessionStorage.setItem("usuarioId", data.id);
+            sessionStorage.setItem("id_usuario", data.id);
             window.location.href = "/NuevoMenu/Menu.html";
         }else {
             alert("Error al iniciar sesión " + (data.error || "Ocurrio un problema"));

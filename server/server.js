@@ -65,7 +65,7 @@ app.delete("/reconocimientos/:id", reconocimientoController.eliminarReconocimien
 
 // Definir rutas de listas
 app.post("/listas", listaController.registrarLista);
-app.get("/listas:id_usuario", listaController.obtenerListas);
+app.get("/listas/:id_usuario", listaController.obtenerListasPorUsuario);
 app.get("/listas/:id", listaController.obtenerListaPorID);
 app.put("/listas/:id", listaController.actualizarLista);
 app.delete("/listas/:id", listaController.eliminarLista);
@@ -77,10 +77,6 @@ app.get("/calendarios/:id", calendarioController.obtenerCalendarioPorID);
 app.put("/calendarios/:id", calendarioController.actualizarCalendario);
 app.delete("/calendarios/:id", calendarioController.eliminarCalendario);
 
-//Ruta de prueba
-/*app.get("/", (req, res)=> {
-    res.send("Servidor funcionando ");
-});*/
 //Inicia el servidor
 app.listen(PORT, ()=> {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);

@@ -35,9 +35,9 @@ class listaDAO {
         }
     }
     //Función que consulta todas las listas
-    async obtenerListasPorUsuario(){
+    async obtenerListasPorUsuario(id_usuario){
         try {
-            const listas = await Lista.findAll({where: {id_usuario: userId}});
+            const listas = await Lista.findAll({where: {id_usuario: id_usuario}});
             return listas;
         } catch (error) {
             console.error('Error al consultar todas las listas', error);
