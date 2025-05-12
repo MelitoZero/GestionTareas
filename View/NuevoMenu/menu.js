@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //Función que cierra sesión
         closeBtn.addEventListener("click", function() {
             sessionStorage.removeItem("token");
-            alert("Sesión cerrada");
+            //alert("Sesión cerrada");
             window.location.href = "/NuevoLogin/index.html";
         });    
 });
