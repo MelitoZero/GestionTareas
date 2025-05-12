@@ -3,42 +3,395 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Listas de Tareas</title>
-  <link rel="stylesheet" href="css/lista_tareas.css">
-
+  <title>Lista de Tareas</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/EstiloListaT.css">
 </head>
 <body>
-  <div class="container">
-    <button class="btn volver"onclick="location.href='dashboard.html'"> Volver ya jala</button>
-    <h1 class="titulo">Listas de Tareas</h1>
-
-    <div class="tabla-container">
-      <table class="tabla">
+  <!-- Mobile menu button -->
+  <button class="mobile-menu-button" id="mobile-menu-toggle">
+    <i class='bx bx-menu'></i>
+  </button>
+  
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2>Menu</h2>
+      <!-- Botón de notificaciones -->
+      <button class="notification-button" id="notification-toggle">
+        <i class='bx bx-bell'></i>
+        <span class="notification-badge">3</span>
+      </button>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-item">
+        <i class='bx bx-log-out'></i>
+        <span>Cerrar sesión</span>
+      </a>
+       <a href="dashboard.html" class="nav-item">
+        <i class='bx bx-menu'></i>
+        <span>Menu</span>
+      </a>
+      <a href="perfil.html" class="nav-item">
+        <i class='bx bx-user'></i>
+        <span>Perfil</span>
+      </a>
+      <a href="crear-tarea.html" class="nav-item">
+        <i class='bx bx-plus-circle'></i>
+        <span>Crear Nueva Tarea</span>
+      </a>
+      <a href="lista-tareas.html" class="nav-item active">
+        <i class='bx bx-task'></i>
+        <span>Lista de Tareas</span>
+      </a>
+    </nav>
+  </aside>
+  
+  <!-- Main content -->
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Lista de Tareas</h1>
+      <div class="actions">
+        <button id="btn-add-task" class="btn btn-primary">
+          <i class='bx bx-plus'></i> Nueva Tarea
+        </button>
+      </div>
+    </div>
+    
+    <!-- Filtros -->
+    <div class="filters" id="task-filters">
+      <div class="filter-group">
+        <label for="filter-status">Estado:</label>
+        <select id="filter-status" class="filter-select">
+          <option value="all">Todos</option>
+          <option value="pending">Pendiente</option>
+          <option value="completed">Completada</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-category">Categoría:</label>
+        <select id="filter-category" class="filter-select">
+          <option value="all">Todas</option>
+          <option value="work">Trabajo</option>
+          <option value="personal">Personal</option>
+          <option value="study">Estudio</option>
+        </select>
+      </div>
+      <div class="search-group">
+        <input type="text" id="search-task" placeholder="Buscar tarea...">
+        <button id="btn-search" class="btn-icon">
+          <i class='bx bx-search'></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Tabla de tareas -->
+    <div class="task-table-container" id="task-table-container">
+      <table class="task-table" id="task-table">
         <thead>
           <tr>
             <th>Tarea</th>
             <th>Categoría</th>
             <th>Fecha Límite</th>
             <th>Estado</th>
+            <th>Acciones</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>Ejemplo 1</td>
-            <td>Trabajo</td>
-            <td>2025-05-10</td>
-            <td>Pendiente</td>
+        <tbody id="task-list">
+          <tr id="task-1" class="task-item" data-status="pending" data-category="work">
+            <td class="task-name">Completar informe trimestral</td>
+            <td class="task-category">Trabajo</td>
+            <td class="task-deadline">2025-05-15</td>
+            <td class="task-status"><span class="status-badge pending">Pendiente</span></td>
+            <td class="task-actions">
+              <button class="btn-icon btn-edit" data-task-id="1">
+                <i class='bx bx-edit'></i>
+              </button>
+              <button class="btn-icon btn-complete" data-task-id="1">
+                <i class='bx bx-check'></i>
+              </button>
+              <button class="btn-icon btn-delete" data-task-id="1">
+                <i class='bx bx-trash'></i>
+              </button>
+            </td>
           </tr>
-          <!-- agregar más filas aquí -->
+          <tr id="task-2" class="task-item" data-status="completed" data-category="personal">
+            <td class="task-name">Comprar víveres</td>
+            <td class="task-category">Personal</td>
+            <td class="task-deadline">2025-05-10</td>
+            <td class="task-status"><span class="status-badge completed">Completada</span></td>
+            <td class="task-actions">
+              <button class="btn-icon btn-edit" data-task-id="2">
+                <i class='bx bx-edit'></i>
+              </button>
+              <button class="btn-icon btn-complete" data-task-id="2" disabled>
+                <i class='bx bx-check'></i>
+              </button>
+              <button class="btn-icon btn-delete" data-task-id="2">
+                <i class='bx bx-trash'></i>
+              </button>
+            </td>
+          </tr>
+          <tr id="task-3" class="task-item" data-status="pending" data-category="study">
+            <td class="task-name">Estudiar para examen</td>
+            <td class="task-category">Estudio</td>
+            <td class="task-deadline">2025-05-20</td>
+            <td class="task-status"><span class="status-badge pending">Pendiente</span></td>
+            <td class="task-actions">
+              <button class="btn-icon btn-edit" data-task-id="3">
+                <i class='bx bx-edit'></i>
+              </button>
+              <button class="btn-icon btn-complete" data-task-id="3">
+                <i class='bx bx-check'></i>
+              </button>
+              <button class="btn-icon btn-delete" data-task-id="3">
+                <i class='bx bx-trash'></i>
+              </button>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
-
-    <div class="botones">
-      <button onclick="location.href='Actualizar.html'">Actualizar</button>
-      <button class="btn">Marcar realizada</button>
-      <button class="btn">Eliminar</button>
+    
+    <!-- Mensaje cuando no hay tareas -->
+    <div class="no-tasks-message" id="no-tasks-message" style="display: none;">
+      <i class='bx bx-calendar-x'></i>
+      <p>No hay tareas que coincidan con los filtros seleccionados.</p>
+    </div>
+  </main>
+  
+  <!-- Modal para editar/crear tarea -->
+  <div class="modal" id="task-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title">Editar Tarea</h2>
+        <button class="close-button" id="close-modal">
+          <i class='bx bx-x'></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="task-form">
+          <input type="hidden" id="task-id">
+          <div class="form-group">
+            <label for="task-name-input">Nombre de la tarea</label>
+            <input type="text" id="task-name-input" required>
+          </div>
+          <div class="form-group">
+            <label for="task-category-input">Categoría</label>
+            <select id="task-category-input" required>
+              <option value="work">Trabajo</option>
+              <option value="personal">Personal</option>
+              <option value="study">Estudio</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="task-deadline-input">Fecha límite</label>
+            <input type="date" id="task-deadline-input" required>
+          </div>
+          <div class="form-group">
+            <label for="task-status-input">Estado</label>
+            <select id="task-status-input">
+              <option value="pending">Pendiente</option>
+              <option value="completed">Completada</option>
+            </select>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" id="cancel-task">Cancelar</button>
+            <button type="submit" class="btn btn-primary" id="save-task">Guardar</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
+  
+  <script>
+    // Mobile menu toggle
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    
+    mobileMenuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+    
+    // Modal functionality
+    const taskModal = document.getElementById('task-modal');
+    const closeModal = document.getElementById('close-modal');
+    const cancelTask = document.getElementById('cancel-task');
+    const btnAddTask = document.getElementById('btn-add-task');
+    const modalTitle = document.getElementById('modal-title');
+    const taskForm = document.getElementById('task-form');
+    
+    // Open modal for new task
+    btnAddTask.addEventListener('click', () => {
+      modalTitle.textContent = 'Nueva Tarea';
+      document.getElementById('task-id').value = '';
+      document.getElementById('task-name-input').value = '';
+      document.getElementById('task-category-input').value = 'work';
+      document.getElementById('task-deadline-input').value = '';
+      document.getElementById('task-status-input').value = 'pending';
+      taskModal.classList.add('open');
+    });
+    
+    // Close modal
+    closeModal.addEventListener('click', () => {
+      taskModal.classList.remove('open');
+    });
+    
+    cancelTask.addEventListener('click', () => {
+      taskModal.classList.remove('open');
+    });
+    
+    // Edit task
+    const editButtons = document.querySelectorAll('.btn-edit');
+    editButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const taskId = button.getAttribute('data-task-id');
+        const taskRow = document.getElementById(`task-${taskId}`);
+        
+        modalTitle.textContent = 'Editar Tarea';
+        document.getElementById('task-id').value = taskId;
+        document.getElementById('task-name-input').value = taskRow.querySelector('.task-name').textContent;
+        document.getElementById('task-category-input').value = taskRow.getAttribute('data-category');
+        document.getElementById('task-deadline-input').value = taskRow.querySelector('.task-deadline').textContent;
+        document.getElementById('task-status-input').value = taskRow.getAttribute('data-status');
+        
+        taskModal.classList.add('open');
+      });
+    });
+    
+    // Complete task
+    const completeButtons = document.querySelectorAll('.btn-complete');
+    completeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const taskId = button.getAttribute('data-task-id');
+        const taskRow = document.getElementById(`task-${taskId}`);
+        
+        // Update UI
+        taskRow.setAttribute('data-status', 'completed');
+        const statusBadge = taskRow.querySelector('.status-badge');
+        statusBadge.textContent = 'Completada';
+        statusBadge.classList.remove('pending');
+        statusBadge.classList.add('completed');
+        
+        // Disable complete button
+        button.disabled = true;
+        
+        // Here you would typically send an API request to update the task status
+        console.log(`Task ${taskId} marked as completed`);
+      });
+    });
+    
+    // Delete task
+    const deleteButtons = document.querySelectorAll('.btn-delete');
+    deleteButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const taskId = button.getAttribute('data-task-id');
+        
+        if (confirm('¿Estás seguro de que deseas eliminar esta tarea?')) {
+          // Remove from UI
+          document.getElementById(`task-${taskId}`).remove();
+          
+          // Check if there are any tasks left
+          if (document.querySelectorAll('.task-item').length === 0) {
+            document.getElementById('no-tasks-message').style.display = 'flex';
+          }
+          
+          // Here you would typically send an API request to delete the task
+          console.log(`Task ${taskId} deleted`);
+        }
+      });
+    });
+    
+    // Form submission
+    taskForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const taskId = document.getElementById('task-id').value;
+      const taskName = document.getElementById('task-name-input').value;
+      const taskCategory = document.getElementById('task-category-input').value;
+      const taskDeadline = document.getElementById('task-deadline-input').value;
+      const taskStatus = document.getElementById('task-status-input').value;
+      
+      // Here you would typically send an API request to save the task
+      console.log('Task data:', {
+        id: taskId || 'new',
+        name: taskName,
+        category: taskCategory,
+        deadline: taskDeadline,
+        status: taskStatus
+      });
+      
+      // Close modal
+      taskModal.classList.remove('open');
+      
+      // For demo purposes, let's update the UI if editing an existing task
+      if (taskId) {
+        const taskRow = document.getElementById(`task-${taskId}`);
+        
+        taskRow.querySelector('.task-name').textContent = taskName;
+        
+        const categoryText = taskCategory === 'work' ? 'Trabajo' : 
+                            taskCategory === 'personal' ? 'Personal' : 'Estudio';
+        taskRow.querySelector('.task-category').textContent = categoryText;
+        
+        taskRow.querySelector('.task-deadline').textContent = taskDeadline;
+        
+        const statusBadge = taskRow.querySelector('.status-badge');
+        statusBadge.textContent = taskStatus === 'pending' ? 'Pendiente' : 'Completada';
+        statusBadge.className = 'status-badge ' + taskStatus;
+        
+        taskRow.setAttribute('data-status', taskStatus);
+        taskRow.setAttribute('data-category', taskCategory);
+        
+        // Update complete button state
+        const completeButton = taskRow.querySelector('.btn-complete');
+        completeButton.disabled = taskStatus === 'completed';
+      }
+    });
+    
+    // Filter functionality
+    const filterStatus = document.getElementById('filter-status');
+    const filterCategory = document.getElementById('filter-category');
+    const searchTask = document.getElementById('search-task');
+    const btnSearch = document.getElementById('btn-search');
+    
+    function applyFilters() {
+      const statusFilter = filterStatus.value;
+      const categoryFilter = filterCategory.value;
+      const searchText = searchTask.value.toLowerCase();
+      
+      const tasks = document.querySelectorAll('.task-item');
+      let visibleTasks = 0;
+      
+      tasks.forEach(task => {
+        const taskStatus = task.getAttribute('data-status');
+        const taskCategory = task.getAttribute('data-category');
+        const taskName = task.querySelector('.task-name').textContent.toLowerCase();
+        
+        const statusMatch = statusFilter === 'all' || taskStatus === statusFilter;
+        const categoryMatch = categoryFilter === 'all' || taskCategory === categoryFilter;
+        const searchMatch = taskName.includes(searchText);
+        
+        if (statusMatch && categoryMatch && searchMatch) {
+          task.style.display = '';
+          visibleTasks++;
+        } else {
+          task.style.display = 'none';
+        }
+      });
+      
+      // Show/hide no tasks message
+      document.getElementById('no-tasks-message').style.display = visibleTasks === 0 ? 'flex' : 'none';
+    }
+    
+    filterStatus.addEventListener('change', applyFilters);
+    filterCategory.addEventListener('change', applyFilters);
+    btnSearch.addEventListener('click', applyFilters);
+    searchTask.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') {
+        applyFilters();
+      }
+    });
+  </script>
 </body>
 </html>
