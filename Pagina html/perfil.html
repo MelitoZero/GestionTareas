@@ -1,37 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Usuario</title>
-    <link rel="stylesheet" href="css/estilos.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Perfil</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/EstilosPerfil.css">
 </head>
-<body id="perfil-body">
-    <header class="EncabezadoPerfil" id="perfil-header">
-        <h1 id="perfil-titulo">Mi Perfil</h1>
-        <nav class ="LinksPerfil" id="perfil-nav">
-            <a href="dashboard.html">Tareas</a>
-            <a href="calendario.html">Calendario</a>
-            <a href="perfil.html" class="activo">Perfil</a>
-            <a href="index.html">Cerrar Sesión</a>
-        </nav>
-    </header>
-
-   <main id="perfil-content-wrapper">
-    <section id="perfil-main">
-        <section id="info-usuario">
-            <h2>Información del Usuario</h2>
-            <p><strong>Nombre:</strong> Usuario de Prueba</p>
-            <p><strong>Correo:</strong> usuario@correo.com</p>
-            <p><strong>Fecha de Registro:</strong> 2025-01-01</p>
-
-            <div class="perfil-botones">
-                <button class="btn-editar">Editar Perfil</button>
-                <button class="btn-eliminar">Eliminar Cuenta</button>
-            </div>
-        </section>
-    </section>
-</main>
-
+<body>
+  <header class="header">
+    <h1 class="logo">Mi Perfil</h1>
+    <nav class="nav">
+      <a href="dashboard.html" class="nav-link">Menú</a>
+      <a href="index.html" class="nav-link">Cerrar Sesión</a>
+    </nav>
+  </header>
+  
+  <main class="main-content">
+    <div class="profile-card">
+      <div class="profile-header">
+        <h2>Información del Usuario</h2>
+      </div>
+      
+      <div class="profile-info">
+        <div class="info-item">
+          <span class="info-label">Nombre:</span>
+          <span class="info-value">Usuario de Prueba</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="info-label">Correo:</span>
+          <span class="info-value">usuario@correo.com</span>
+        </div>
+        
+        <div class="info-item">
+          <span class="info-label">Fecha de Registro:</span>
+          <span class="info-value">2025-01-01</span>
+        </div>
+      </div>
+      
+      <div class="profile-actions">
+        <button class="btn btn-edit">Editar Perfil</button>
+        <button class="btn btn-delete">Eliminar Cuenta</button>
+      </div>
+    </div>
+  </main>
+  
+  <script>
+    // Funcionalidad para los botones
+    document.querySelector('.btn-edit').addEventListener('click', function() {
+      alert('Función para editar perfil');
+    });
+    
+    document.querySelector('.btn-delete').addEventListener('click', function() {
+      if (confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.')) {
+        alert('Cuenta eliminada');
+        window.location.href = 'index.html';
+      }
+    });
+  </script>
 </body>
 </html>
