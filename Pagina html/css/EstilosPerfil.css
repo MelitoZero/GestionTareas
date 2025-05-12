@@ -8,7 +8,7 @@
 }
 
 body {
-  background-color: #e0f7fa;
+  background-color: #262727;
   color: #333;
   min-height: 100vh;
   display: flex;
@@ -21,14 +21,14 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 2rem;
-  background-color: #ffffff;
+  background-color: #353535;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: 500;
-  color: #333;
+  color: #ffffff;
 }
 
 .nav {
@@ -37,7 +37,7 @@ body {
 }
 
 .nav-link {
-  color: #00796b;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s;
@@ -58,7 +58,7 @@ body {
 
 /* Profile card */
 .profile-card {
-  background-color: #f5f9fa;
+  background-color: #121213;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   width: 100%;
@@ -69,13 +69,13 @@ body {
 .profile-header {
   padding: 1.5rem;
   text-align: center;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #363535;
 }
 
 .profile-header h2 {
   font-size: 1.25rem;
   font-weight: 500;
-  color: #333;
+  color: #363535;
 }
 
 .profile-info {
@@ -90,12 +90,12 @@ body {
 
 .info-label {
   font-weight: 500;
-  color: #555;
+  color: #ffffff;
   margin-bottom: 0.25rem;
 }
 
 .info-value {
-  color: #333;
+  color: #ffffff;
 }
 
 .profile-actions {
@@ -116,7 +116,7 @@ body {
 }
 
 .btn-edit {
-  background-color: #009688;
+  background-color: #313131;
   color: white;
 }
 
