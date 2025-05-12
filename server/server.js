@@ -12,11 +12,12 @@ const jwt = require("jsonwebtoken");
 const path = require('path');
 //Permite procesar JSON
 app.use(bodyParser.json());
-app.use(express.static("View"));
-/*app.get("/", (req, res)=> {
+//app.use(express.static("View"));
+app.use(express.static(path.join(__dirname, '..', 'View')));
+app.get("/", (req, res)=> {
     //res.redirect("/View/login/index.html");
-    res.sendFile(path.join(__dirname, 'View', 'login', 'index.html'));
-});*/
+    res.sendFile(path.join(__dirname, '..', 'View', 'NuevoLogin', 'index.html'));
+});
 //Función que permite validar tokens
 function verificarToken(req, res, next){
     const authHeader = req.headers.authorization;
