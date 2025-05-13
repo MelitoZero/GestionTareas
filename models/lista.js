@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       //Relacion usuario - lista de muchos a uno
       Lista.belongsTo(models.Usuario, {foreignKey: 'id_usuario'});
       //Relacion tarea - lista de uno a uno
-      Lista.belongsTo(models.Tarea, {foreignKey: 'id_lista'});
+      Lista.hasMany(models.Tarea, {foreignKey: 'id_lista'});
     }
   }
   Lista.init({
