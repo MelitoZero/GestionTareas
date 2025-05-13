@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       //Definir relaciones de recordatorio
       //Relacion tarea - recordatorio uno a uno
-      Recordatorio.belongsTo(models.Tarea, {foreignKey: 'id_usuario'});
+      Recordatorio.belongsTo(models.Tarea, {foreignKey: 'id_tarea'});
     }
   }
   Recordatorio.init({

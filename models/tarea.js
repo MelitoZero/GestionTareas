@@ -12,9 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       //Definir relaciones de tarea
       //Relacion uno a uno de tarea con lista
-      Tarea.hasOne(models.Lista, { foreignKey: 'id_lista'});
+      Tarea.belongsTo(models.Lista, { foreignKey: 'id_lista'});
       //Relacion uno a uno de tarea a recordatorio
-      Tarea.hasOne(models.Recordatorio, {foreignKey: 'id_usuario'});
+      Tarea.hasOne(models.Recordatorio, {foreignKey: 'id_tarea'});
       //Relacion usuario - tarea muchos a uno
       Tarea.belongsTo(models.Usuario, {foreignKey: 'id_usuario'});
     }
