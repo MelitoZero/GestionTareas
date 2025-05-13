@@ -409,3 +409,113 @@ body {
     max-width: calc(100% - 2rem);
   }
 }
+
+/* Estilos para los indicadores de tareas en el calendario */
+.day {
+    position: relative;
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.day-number {
+    font-size: 0.875rem;
+    margin-bottom: 2px;
+}
+
+.day.today .day-number {
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.day.selected {
+    background-color: #e6f7ff;
+}
+
+.day.selected .day-number {
+    color: #0066cc;
+    font-weight: 600;
+}
+
+.day-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 2px;
+    overflow: hidden;
+}
+
+.task-indicator {
+    font-size: 0.7rem;
+    padding: 2px 4px;
+    border-radius: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.task-indicator.pending {
+    background-color: #fff7e6;
+    color: #fa8c16;
+}
+
+.task-indicator.completed {
+    background-color: #f6ffed;
+    color: #52c41a;
+}
+
+.more-tasks {
+    font-size: 0.7rem;
+    color: #999;
+    text-align: center;
+    margin-top: 2px;
+}
+
+/* Estilos para la lista de tareas del día */
+.tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.task-item {
+    background-color: #ffffff;
+    border-radius: 6px;
+    padding: 10px;
+    border-left: 4px solid #f0f0f0;
+}
+
+.task-item.pending {
+    border-left-color: #fa8c16;
+}
+
+.task-item.completed {
+    border-left-color: #52c41a;
+}
+
+.task-name {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.task-details {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.task-description {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 5px;
+}
