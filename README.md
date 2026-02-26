@@ -6,7 +6,7 @@ gestionar tareas y actividades segun las necesidades del usuario
 
 Este proyecto esta encargado por los Alumnos:
 Uziel Melo Flores
-Jose Rauk Rojo Ontiveros
+Jose Raul Rojo Ontiveros
 Jesus Filiberto Rojo Aragón
 Kevin Daniel Soto Mariscal
 Jorge Manuel Enriquez Dominguez
